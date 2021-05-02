@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var dataAll = [
+                [{value:4481,name:"民营公司"},
+                {value:651,name:"合资"},
+                {value:602,name:"上市公司"},
+                {value:422,name:"国企"},
+                {value:298,name:"外资（非欧美）"},
+                {value:270,name:"外资（欧美）"},
+                {value:77,name:"创业公司"},
+                {value:31,name:"事业单位"},
+                {value:6,name:"非营利组织"},
+                {value:2,name:"政府机关"},
+                {value:1,name:"外企代表处"}],
+
+                [{value:1643,name:"150-500人"},
+                {value:1513,name:"50-150人"},
+                {value:1020,name:"500-1000人"},
+                {value:1008,name:"1000-5000人"},
+                {value:688,name:"10000人以上"},
+                {value:626,name:"少于50人"},
+                {value:267,name:"5000-10000人"}]
+    ];
+
+option = {
+    title: [{
+        text: '招聘公司情况',
+        subtext: '数据来源：51job.com'
+    }, {
+        subtext: '公司类型',
+        left: '27%',
+        top: '75%',
+        textAlign: 'center'
+    }, {
+        subtext: '公司规模',
+        left: '72%',
+        top: '75%',
+        textAlign: 'center'
+    }],
+    series: [{
+        type: 'pie',
+        radius: '40%',
+        center: ['50%', '50%'],
+        data: dataAll[0],
+        animation: false,
+        label: {
+            position: 'outer',
+            alignTo: 'none',
+            bleedMargin: 5,
+            formatter: '{b}: {@2012}'
+        },
+        left: '5%',
+        right: '50%',
+        top: 0,
+        bottom: 0
+    }, {
+        type: 'pie',
+        radius: '40%',
+        center: ['50%', '50%'],
+        data: dataAll[1],
+        animation: false,
+        label: {
+            position: 'outer',
+            alignTo: 'labelLine',
+            bleedMargin: 5,
+            formatter: '{b}: {@2012}'
+        },
+        left: '50%',
+        right: '5%',
+        top: 0,
+        bottom: 0
+    }]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

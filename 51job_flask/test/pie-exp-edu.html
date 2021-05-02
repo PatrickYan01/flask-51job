@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var dataAll = [
+                [{value:3592,name:"本科"},
+                {value:1922,name:"大专"},
+                {value:305,name:"硕士"},
+                {value:216,name:"中专"},
+                {value:206,name:"高中"},
+                {value:15,name:"中技"},
+                {value:10,name:"博士"},
+                {value:6,name:"初中及以下"},],
+
+                [{value:1557,name:"3-4年经验"},
+                {value:1368,name:"1年经验"},
+                {value:1250,name:"2年经验"},
+                {value:613,name:"无需经验"},
+                {value:481,name:"5-7年经验"},
+                {value:28,name:"8-9年经验"},
+                {value:10,name:"10年以上经验"},]
+    ];
+
+option = {
+    title: [{
+        text: '招聘要求',
+        subtext: '数据来源：51job.com'
+    }, {
+        subtext: '学历要求',
+        left: '27%',
+        top: '75%',
+        textAlign: 'center'
+    }, {
+        subtext: '经验要求',
+        left: '72%',
+        top: '75%',
+        textAlign: 'center'
+    }],
+    series: [{
+        type: 'pie',
+        radius: '40%',
+        center: ['50%', '50%'],
+        data: dataAll[0],
+        animation: false,
+        label: {
+            position: 'outer',
+            alignTo: 'none',
+            bleedMargin: 5,
+            formatter: '{b}: {@2012}'
+        },
+        left: '5%',
+        right: '50%',
+        top: 0,
+        bottom: 0
+    }, {
+        type: 'pie',
+        radius: '40%',
+        center: ['50%', '50%'],
+        data: dataAll[1],
+        animation: false,
+        label: {
+            position: 'outer',
+            alignTo: 'labelLine',
+            bleedMargin: 5,
+            formatter: '{b}: {@2012}'
+        },
+        left: '50%',
+        right: '5%',
+        top: 0,
+        bottom: 0
+    }]
+};;;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

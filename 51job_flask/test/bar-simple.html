@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+    text: '全国主要城市数据分析岗位平均月薪',
+    subtext: '数据来源：51job.com'
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    calculable: true,
+    tooltip: {
+        trigger: 'axis'
+    },
+    xAxis: {
+        type: 'category',
+        data: ['北京', '上海', '深圳', '东莞', '杭州', '广州', '苏州', 
+        '南京', '福州', '厦门', '长沙', '武汉', '佛山', '无锡', '宁波',
+        '成都', '重庆', '合肥', '青岛', '南通', '西安', '昆明', '沈阳'],
+        axisLabel:{interval: 0}
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [16677.1, 13500.6, 12898.7, 12724.6, 11440.3, 10196.3, 
+        10096.3, 9963.2, 9544.6, 9503.1, 9069.5, 8956.7, 8747.8, 
+        8263.4, 8207.2, 8112.5, 7984.7, 7291.7, 7212.1, 6964.7, 6944.4, 
+        6275.4, 6167.3],
+        type: 'bar',
+    markLine: {
+        data: [
+            {type: 'average', name: '平均值'}
+        ]
+    }
+    }]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

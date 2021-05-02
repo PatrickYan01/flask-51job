@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+      <div class="container">
+            <head>
+       <meta charset="utf-8">
+   </head>
+            <body style="height: 100%; margin: 0">
+       <div id="container" style="width:800px; height:550px;"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: '全国主要城市数据分析师',
+        subtext: '数据来源：51job.com'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['招聘岗位数', '公司数']
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    calculable: true,
+    xAxis: [
+        {
+            type: 'category',
+            data: ['上海', '广州', '深圳', '北京', '成都', '杭州',
+            '武汉', '合肥', '西安', '南京', '重庆', '苏州', '长沙',
+            '佛山', '宁波', '福州', '东莞', '无锡', '昆明', '青岛',
+            '沈阳', '南通', '厦门'],
+            axisLabel:{interval: 0}
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+    series: [
+        {
+            name: '招聘岗位数',
+            type: 'bar',
+            data: [1072, 877, 667, 621, 397, 305, 260, 229, 222,
+            184, 100, 99, 87, 85, 80, 71, 69, 62, 59, 55, 52, 51, 49],
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '公司数',
+            type: 'bar',
+            data: [787, 564, 464, 281, 195, 243, 133, 64, 78,
+            139, 75, 83, 69, 51, 66, 46, 52, 51, 50, 33, 29, 17, 40],
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+        </div>
+</html>
